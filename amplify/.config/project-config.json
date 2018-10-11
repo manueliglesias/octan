@@ -1,0 +1,20 @@
+{
+    "projectName": "octanapp",
+    "projectPath": "/Users/manuelig/github-repos/amplify_hackathon/octan-app",
+    "defaultEditor": "code",
+    "frontendHandler": {
+        "javascript": "/Users/manuelig/.nvm/versions/node/v8.11.1/lib/node_modules/@aws-amplify/cli/node_modules/amplify-frontend-javascript"
+    },
+    "javascript": {
+        "framework": "react",
+        "config": {
+            "SourceDir": "src",
+            "DistributionDir": "build",
+            "BuildCommand": "npm run-script build",
+            "StartCommand": "npm run-script start"
+        }
+    },
+    "providers": {
+        "awscloudformation": "/Users/manuelig/.nvm/versions/node/v8.11.1/lib/node_modules/@aws-amplify/cli/node_modules/amplify-provider-awscloudformation"
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "providers": {
+        "awscloudformation": {
+            "AuthRoleName": "octanapp-20181011102140-authRole",
+            "UnauthRoleArn": "arn:aws:iam::202696340233:role/octanapp-20181011102140-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::202696340233:role/octanapp-20181011102140-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "octanapp-20181011102140-deployment",
+            "UnauthRoleName": "octanapp-20181011102140-unauthRole",
+            "StackName": "octanapp-20181011102140",
+            "StackId": "arn:aws:cloudformation:us-east-1:202696340233:stack/octanapp-20181011102140/00b9f050-cd7a-11e8-8bac-5044763dbb7b"
+        }
+    }
+}
