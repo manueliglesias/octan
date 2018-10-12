@@ -1,0 +1,9 @@
+{
+    "bucketName": "octanappff038eb9b19242399ff639e90530442a",
+    "authPolicyName": "s3_amplify_4068ac18",
+    "unauthPolicyName": "s3_amplify_4068ac18",
+    "authRoleName": "octanapp-20181011102140-authRole",
+    "unauthRoleName": "octanapp-20181011102140-unauthRole",
+    "authPermissions": "rw",
+    "unauthPermissions": "r"
+}

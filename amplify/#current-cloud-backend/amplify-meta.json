@@ -1,14 +1,72 @@
 {
-    "providers": {
-        "awscloudformation": {
-            "AuthRoleName": "octanapp-20181011102140-authRole",
-            "UnauthRoleArn": "arn:aws:iam::202696340233:role/octanapp-20181011102140-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::202696340233:role/octanapp-20181011102140-authRole",
-            "Region": "us-east-1",
-            "DeploymentBucketName": "octanapp-20181011102140-deployment",
-            "UnauthRoleName": "octanapp-20181011102140-unauthRole",
-            "StackName": "octanapp-20181011102140",
-            "StackId": "arn:aws:cloudformation:us-east-1:202696340233:stack/octanapp-20181011102140/00b9f050-cd7a-11e8-8bac-5044763dbb7b"
-        }
-    }
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "octanapp-20181011102140-authRole",
+			"UnauthRoleArn": "arn:aws:iam::202696340233:role/octanapp-20181011102140-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::202696340233:role/octanapp-20181011102140-authRole",
+			"Region": "us-east-1",
+			"DeploymentBucketName": "octanapp-20181011102140-deployment",
+			"UnauthRoleName": "octanapp-20181011102140-unauthRole",
+			"StackName": "octanapp-20181011102140",
+			"StackId": "arn:aws:cloudformation:us-east-1:202696340233:stack/octanapp-20181011102140/00b9f050-cd7a-11e8-8bac-5044763dbb7b"
+		}
+	},
+	"auth": {
+		"cognito56a02217": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/octanapp-20181011102140-deployment/amplify-cfn-templates/auth/cognito56a02217-cloudformation-template.yml",
+				"logicalId": "authcognito56a02217"
+			},
+			"lastPushTimeStamp": "2018-10-11T21:32:55.546Z",
+			"output": {
+				"AppClientSecret": "j56kkrdq9s0d52rbr658k3ppb9drecnpm46ak7s51q4epefgo3f",
+				"UserPoolId": "us-east-1_W8p1gJhx8",
+				"AppClientIDWeb": "373oci7c84kac6qecff9e9nsnh",
+				"AppClientID": "d2bukm622geaqud1v8j1cqec7",
+				"IdentityPoolId": "us-east-1:b82d7869-6c7d-4b83-a624-310fb1241c66",
+				"IdentityPoolName": "cognito56a02217_identitypool_56a02217",
+				"UserPoolName": "cognito56a02217_userpool_56a02217"
+			},
+			"lastPushDirHash": "SMBp+39IqUbwoupGmD3MgGs9YGA="
+		}
+	},
+	"api": {
+		"octanapp": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"securityType": "AMAZON_COGNITO_USER_POOLS",
+				"GraphQLAPIIdOutput": "hq4xcuuhyzbehbiybgpc73rp6m",
+				"GraphQLAPIEndpointOutput": "https://bx2lasf555fxnkkwstjbps5nga.appsync-api.us-east-1.amazonaws.com/graphql",
+				"GraphQLAPIKeyOutput": "da2-35233bmnfjeerbd56e5cagxuvy",
+				"AuthCognitoUserPoolIdOutput": "us-east-1_W8p1gJhx8",
+				"AuthCognitoUserPoolNativeClientId": "See UserPool: us-east-1_W8p1gJhx8",
+				"AuthCognitoUserPoolJSClientId": "See UserPool: us-east-1_W8p1gJhx8"
+			},
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/octanapp-20181011102140-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"logicalId": "apioctanapp"
+			},
+			"lastPushTimeStamp": "2018-10-11T21:32:56.742Z",
+			"lastPushDirHash": "/mlYjvxWPr2OUKvD+lmputh5kjE="
+		}
+	},
+	"storage": {
+		"s34068ac18": {
+			"service": "S3",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/octanapp-20181011102140-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
+				"logicalId": "storages34068ac18"
+			},
+			"lastPushTimeStamp": "2018-10-11T21:32:55.548Z",
+			"output": {
+				"BucketName": "octanappff038eb9b19242399ff639e90530442a",
+				"Region": "us-east-1"
+			},
+			"lastPushDirHash": "Vh6uiVMvMzKzz3oCHABjxNio/dU="
+		}
+	}
 }

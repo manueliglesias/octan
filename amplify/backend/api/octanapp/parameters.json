@@ -1,0 +1,13 @@
+{
+    "AppSyncApiName": "octanapp",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authcognito56a02217",
+            "Outputs.UserPoolId"
+        ]
+    },
+    "schemaGraphql": "s3://octanapp-20181011102140-deployment/amplify-appsync-files/schema.graphql.1539293416571",
+    "ResolverBucket": "octanapp-20181011102140-deployment",
+    "ResolverRootKey": "amplify-appsync-files",
+    "DeploymentTimestamp": "1539293416571"
+}

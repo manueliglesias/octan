@@ -1,0 +1,16 @@
+projects:
+  octanapp:
+    schemaPath: src/graphql/schema.json
+    includes:
+      - src/graphql/**/*.js
+    excludes:
+      - amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: javascript
+        generatedFileName: ''
+        docsFilePath: src/graphql
+        graphQLApiId: hq4xcuuhyzbehbiybgpc73rp6m
+      endpoints:
+        prod: >-
+          https://bx2lasf555fxnkkwstjbps5nga.appsync-api.us-east-1.amazonaws.com/graphql

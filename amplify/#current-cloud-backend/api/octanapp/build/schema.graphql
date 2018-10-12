@@ -1,0 +1,142 @@
+type Photo {
+  id: ID!
+  owner: String!
+  file: S3Object
+  votes: Int
+  isAwesome: Boolean
+}
+
+type S3Object {
+  region: String!
+  bucket: String!
+  key: String!
+}
+
+input S3ObjectInput {
+  region: String!
+  bucket: String!
+  key: String
+  localUri: String
+  mimeType: String
+}
+
+type Query {
+  listAllPhotos: [Photo]
+  getPhoto(id: ID!): Photo
+  listPhotos(filter: ModelPhotoFilterInput, limit: Int, nextToken: String): ModelPhotoConnection
+}
+
+type Mutation {
+  uploadPhoto(file: S3ObjectInput): Photo
+  upvotePhoto(photoId: ID!): Photo
+  downvotePhoto(photoId: ID!): Photo
+  createPhoto(input: CreatePhotoInput!): Photo
+  updatePhoto(input: UpdatePhotoInput!): Photo
+  deletePhoto(input: DeletePhotoInput!): Photo
+}
+
+type Vote {
+  photoId: String
+  user: String
+  value: Boolean
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelPhotoConnection {
+  items: [Photo]
+  nextToken: String
+}
+
+input ModelStringFilterInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+}
+
+input ModelIDFilterInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+}
+
+input ModelIntFilterInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  contains: Int
+  notContains: Int
+  between: [Int]
+}
+
+input ModelFloatFilterInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  contains: Float
+  notContains: Float
+  between: [Float]
+}
+
+input ModelBooleanFilterInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelPhotoFilterInput {
+  id: ModelIDFilterInput
+  owner: ModelStringFilterInput
+  votes: ModelIntFilterInput
+  isAwesome: ModelBooleanFilterInput
+  and: [ModelPhotoFilterInput]
+  or: [ModelPhotoFilterInput]
+  not: ModelPhotoFilterInput
+}
+
+input CreatePhotoInput {
+  owner: String!
+  file: S3ObjectInput
+  votes: Int
+  isAwesome: Boolean
+}
+
+input UpdatePhotoInput {
+  id: ID!
+  owner: String
+  file: S3ObjectInput
+  votes: Int
+  isAwesome: Boolean
+}
+
+input DeletePhotoInput {
+  id: ID
+}
+
+type Subscription {
+  onCreatePhoto: Photo @aws_subscribe(mutations: ["createPhoto"])
+  onUpdatePhoto: Photo @aws_subscribe(mutations: ["updatePhoto"])
+  onDeletePhoto: Photo @aws_subscribe(mutations: ["deletePhoto"])
+}

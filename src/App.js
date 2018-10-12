@@ -2,6 +2,32 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+// AWS Amplify
+import Amplify, { Auth } from 'aws-amplify';
+import { withAuthenticator } from 'aws-amplify-react';
+
+// AWS AppSync SDK & Apollo
+import { AWSAppSyncClient } from 'aws-appsync';
+import { Rehydrated } from 'aws-appsync-react';
+import { ApolloProvider } from 'react-apollo';
+
+import aws_exports from './aws-exports';
+
+import ListPhotos from './Components/ListPhotos';
+import UploadPhoto from './Components/UploadPhoto';
+
+Amplify.configure(aws_exports);
+
+const client = new AWSAppSyncClient({
+  region: aws_exports.aws_appsync_region,
+  url: aws_exports.aws_appsync_graphqlEndpoint,
+  auth: {
+    type: aws_exports.aws_appsync_authenticationType,
+    jwtToken: async () => (await Auth.currentSession()).idToken.jwtToken,
+  },
+  complexObjectsCredentials: async () => Auth.currentCredentials(),
+});
+
 class App extends Component {
   render() {
     return (
@@ -20,9 +46,19 @@ class App extends Component {
             Learn React
           </a>
         </header>
+        <UploadPhoto bucket={aws_exports.aws_user_files_s3_bucket} region={aws_exports.aws_user_files_s3_bucket_region} />
+        <ListPhotos />
       </div>
     );
   }
 }
 
-export default App;
+const WithAuth = withAuthenticator(App);
+
+export default () => (
+  <ApolloProvider client={client}>
+    <Rehydrated>
+      <WithAuth />
+    </Rehydrated>
+  </ApolloProvider>
+);

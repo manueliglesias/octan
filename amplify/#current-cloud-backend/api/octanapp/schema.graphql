@@ -1,0 +1,43 @@
+type Photo @model {
+  id: ID!
+  owner: String!
+  file: S3Object
+  votes: Int
+  isAwesome: Boolean
+}
+
+type S3Object {
+  region: String!
+  bucket: String!
+  key: String!
+}
+
+input S3ObjectInput {
+  region: String!
+  bucket: String!
+  key: String
+  localUri: String
+  mimeType: String
+}
+
+type Query {
+  listAllPhotos: [Photo]
+}
+
+type Mutation {
+  uploadPhoto(
+    file: S3ObjectInput
+  ): Photo
+  upvotePhoto(
+    photoId: ID!
+  ): Photo
+  downvotePhoto(
+    photoId: ID!
+  ): Photo
+}
+
+type Vote {
+  photoId: String
+  user: String
+  value: Boolean
+}
