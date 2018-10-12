@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 
 import { listAllPhotos } from '../graphql/queries';
 import { S3Image } from 'aws-amplify-react';
+import Photo from "./Photo";
 
 class ListPhotos extends React.Component {
 
@@ -19,14 +20,9 @@ class ListPhotos extends React.Component {
         }
     }
 
-    renderPhoto = ({ id, votes, isAwesome, file: { key } }) => (
-        <li key={id} >
-            <h1>{votes} votes{isAwesome && ', is awesome!!'}</h1>
-            <div>
-                <input type="button" value="UpVote" onClick={this.handleVote.bind(this, 'up')} />
-                <input type="button" value="DownVote" onClick={this.handleVote.bind(this, 'down')} />
-            </div>
-            <S3Image imgKey={key.match(/\/([^\/]+)$/)[1]} />
+    renderPhoto = (photo) => (
+        photo && <li key={photo.id} className="Photo-Item">
+            <Photo photo={photo} />
         </li>
     )
 
@@ -35,7 +31,7 @@ class ListPhotos extends React.Component {
 
         return (
             <ul>
-                {photos.map(this.renderPhoto)}
+                {[...photos].sort((a, b) => -`${a.votes}`.localeCompare(b.votes)).map(this.renderPhoto)}
             </ul>
         );
     }

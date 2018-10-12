@@ -74,12 +74,14 @@ class UploadPhoto extends React.Component {
         const { busy, file, file: { value: _, ...fileProps } } = this.state;
 
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>Image
+            <div className="Photo-Upload">
+                <form onSubmit={this.handleSubmit}>
+                    <label>Image
                     <input type="file" onChange={this.handleChange.bind(this, 'file')} {...fileProps} />
-                </label>
-                <input disabled={busy || !file} type="submit" />
-            </form>
+                    </label>
+                    <input disabled={busy || !file} type="submit" />
+                </form>
+            </div>
         );
     }
 }
