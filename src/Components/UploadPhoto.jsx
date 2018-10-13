@@ -3,7 +3,6 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import { v4 as uuid } from 'uuid';
-import { Auth } from 'aws-amplify';
 import { listAllPhotos } from '../graphql/queries';
 import { uploadPhoto } from '../graphql/mutations';
 
@@ -77,7 +76,7 @@ class UploadPhoto extends React.Component {
             <div className="Photo-Upload">
                 <form onSubmit={this.handleSubmit}>
                     <label>Image
-                    <input type="file" onChange={this.handleChange.bind(this, 'file')} {...fileProps} />
+                    <input type="file" accept="image/*" onChange={this.handleChange.bind(this, 'file')} {...fileProps} />
                     </label>
                     <input disabled={busy || !file} type="submit" />
                 </form>

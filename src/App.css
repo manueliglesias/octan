@@ -48,6 +48,10 @@
   padding: 1em;
 }
 
+.Photo-Item.Is-Awesome {
+  background-color: lightyellow;
+}
+
 .Photo-Item img {
   display: block;
   max-width:20em;

@@ -3,7 +3,6 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import { listAllPhotos } from '../graphql/queries';
-import { S3Image } from 'aws-amplify-react';
 import Photo from "./Photo";
 
 class ListPhotos extends React.Component {
@@ -12,16 +11,8 @@ class ListPhotos extends React.Component {
         urls: null
     };
 
-    handleVote = vote => {
-        switch (vote) {
-            case 'up':
-            case 'down':
-                break;
-        }
-    }
-
     renderPhoto = (photo) => (
-        photo && <li key={photo.id} className="Photo-Item">
+        photo && <li key={photo.id} className={["Photo-Item", photo.isAwesome && "Is-Awesome"].join(' ')}>
             <Photo photo={photo} />
         </li>
     )

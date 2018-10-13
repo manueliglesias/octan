@@ -53,7 +53,8 @@ class App extends Component {
   }
 }
 
-const WithAuth = withAuthenticator(App);
+const WithAuth = withAuthenticator(App, true);
+// const WithAuth = App;
 
 export default () => (
   <ApolloProvider client={client}>

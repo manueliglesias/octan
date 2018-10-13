@@ -18,28 +18,18 @@ export const uploadPhoto = `mutation UploadPhoto($file: S3ObjectInput) {
 export const upvotePhoto = `mutation UpvotePhoto($photoId: ID!) {
   upvotePhoto(photoId: $photoId) {
     id
-    owner
-    file {
-      region
-      bucket
-      key
-    }
-    votes
-    isAwesome
+    photoId
+    user
+    value
   }
 }
 `;
 export const downvotePhoto = `mutation DownvotePhoto($photoId: ID!) {
   downvotePhoto(photoId: $photoId) {
     id
-    owner
-    file {
-      region
-      bucket
-      key
-    }
-    votes
-    isAwesome
+    photoId
+    user
+    value
   }
 }
 `;
